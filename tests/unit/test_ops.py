@@ -985,7 +985,6 @@ def test_difference_lag():
     op = ops.DifferenceLag("userid", shift=[1, -1], columns=["timestamp"])
     new_gdf = op.apply_op(df, columns_ctx, "all", target_cols=["timestamp"])
 
-<<<<<<< HEAD
     assert new_gdf["timestamp_DifferenceLag_1"][0] is None
     assert new_gdf["timestamp_DifferenceLag_1"][1] == 5
     assert new_gdf["timestamp_DifferenceLag_1"][2] == 95
@@ -996,11 +995,6 @@ def test_difference_lag():
     assert new_gdf["timestamp_DifferenceLag_-1"][2] is None
     assert new_gdf["timestamp_DifferenceLag_-1"][3] == -1
     assert new_gdf["timestamp_DifferenceLag_-1"][5] is None
-=======
-    assert new_gdf["timestamp_DifferenceLag"][0] is None
-    assert new_gdf["timestamp_DifferenceLag"][1] == 5
-    assert new_gdf["timestamp_DifferenceLag"][2] == 95
-    assert new_gdf["timestamp_DifferenceLag"][3] is None
 
 
 @pytest.mark.parametrize("gpu_memory_frac", [0.01, 0.1])
@@ -1058,4 +1052,3 @@ def test_bucketized(tmpdir, df, dataset, gpu_memory_frac, engine, use_dict):
             assert np.all(new_gdf[col].values <= len(bs))
             # TODO: add checks for correctness here that don't just
             # repeat the existing logic
->>>>>>> fc_matching
